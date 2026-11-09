@@ -24,7 +24,7 @@ icon_uri = "data:image/svg+xml;base64," + base64.b64encode((ROOT / "favicon.svg"
 # runs first inside every layout: theme from the parent page, safe history calls, and CV links that download with a proper name
 SHIM = """<script>
 (function(){
-  try { document.documentElement.dataset.palette = (parent && parent.__pal) || "forest"; } catch (e) {}
+  try { document.documentElement.dataset.palette = (parent && parent.__pal) || "emerald"; } catch (e) {}
   ["pushState","replaceState"].forEach(function(k){ var f = history[k]; history[k] = function(){ try { return f.apply(history, arguments); } catch (e) {} }; });
   document.addEventListener("click", function(e){
     var a = e.target.closest && e.target.closest('a[href^="#"]');

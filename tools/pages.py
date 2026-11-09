@@ -5,7 +5,7 @@ Bump ASSET_VERSION after changing CSS or JS so returning visitors get the new fi
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-ASSET_VERSION = "14"
+ASSET_VERSION = "15"
 NAME = "Ummul Khair"
 EMAIL = "ummulkhairlxd@gmail.com"
 
@@ -55,7 +55,7 @@ def page(fname, cfg):
 <meta property="og:title" content="{cfg["title"]}">
 <meta property="og:description" content="{cfg["desc"]}">
 <meta name="theme-color" content="#11261c">
-<script>try{{var m=location.search.match(/[?&]palette=([a-z]+)/),p=m?m[1]:localStorage.getItem("palette");if(p)document.documentElement.dataset.palette=p}}catch(e){{}}</script>
+<script>try{{var m=location.search.match(/[?&]palette=([a-z]+)/),p=m?m[1]:localStorage.getItem("palette");document.documentElement.dataset.palette=p==="mono"?"mono":"emerald"}}catch(e){{}}</script>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
