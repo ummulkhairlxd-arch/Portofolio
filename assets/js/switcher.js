@@ -17,7 +17,6 @@
     const b = e.target.closest("button[data-pal]");
     if (!b) return;
     root.dataset.palette = b.dataset.pal;
-    try { localStorage.setItem("palette", b.dataset.pal); } catch (err) {}
     sync();
     document.querySelectorAll('.pal-menu [data-pal]').forEach((x) => x.setAttribute("aria-checked", String(x.dataset.pal === b.dataset.pal)));
   });
