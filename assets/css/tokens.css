@@ -1,0 +1,61 @@
+/* Shared colour themes for every layout. Each palette: ~90% a dark and a light colour, ~10% one accent.
+   --sig-d is the accent on dark surfaces, --sig-l the accent on light ones. Switch with data-palette on <html>. */
+:root,:root[data-palette="forest"]{--dark:#11261c;--light:#ece3d0;--sig-d:#b08cff;--sig-l:#6a2fe0;--d-head:#efe6d2;--d-text:#b9b39f;--d-dim:#82907f;--l-head:#14301f;--l-text:#3f4a3e;--l-dim:#6f7763}
+:root[data-palette="navy"]{--dark:#0f1b33;--light:#f3ead8;--sig-d:#ff7a66;--sig-l:#d24a33;--d-head:#f3ead8;--d-text:#b8bccb;--d-dim:#7f88a0;--l-head:#0f1b33;--l-text:#3e4659;--l-dim:#6e7486}
+:root[data-palette="mulberry"]{--dark:#3d1a2a;--light:#fbedf1;--sig-d:#e8b07a;--sig-l:#94592a;--d-head:#fbedf1;--d-text:#e2c3cf;--d-dim:#b38f9e;--l-head:#3d1a2a;--l-text:#5c3444;--l-dim:#7d5666}
+:root[data-palette="indigo"]{--dark:#15104a;--light:#efedff;--sig-d:#ff5cad;--sig-l:#c8166e;--d-head:#efedff;--d-text:#bfbcd7;--d-dim:#9390b3;--l-head:#15104a;--l-text:#3c386b;--l-dim:#68648f}
+:root[data-palette="ocean"]{--dark:#06293a;--light:#e5f5f2;--sig-d:#ff8a3d;--sig-l:#b8400b;--d-head:#e5f5f2;--d-text:#b4c8ca;--d-dim:#879fa5;--l-head:#06293a;--l-text:#2e4e5b;--l-dim:#526e79}
+:root[data-palette="plum"]{--dark:#2b0e30;--light:#fcedf4;--sig-d:#3ee6ff;--sig-l:#0b6f86;--d-head:#fcedf4;--d-text:#cebcc9;--d-dim:#a48fa2;--l-head:#2b0e30;--l-text:#513653;--l-dim:#7a637a}
+:root[data-palette="emerald"]{--dark:#053b2d;--light:#f4f7ec;--sig-d:#ffc94a;--sig-l:#8a5d00;--d-head:#f4f7ec;--d-text:#bfcec2;--d-dim:#90a89c;--l-head:#053b2d;--l-text:#305d4f;--l-dim:#51776a}
+:root[data-palette="raspberry"]{--dark:#5c0f3d;--light:#fff0e8;--sig-d:#ffc53d;--sig-l:#9a5200;--d-head:#fff0e8;--d-text:#dbbfc2;--d-dim:#bb92a0;--l-head:#5c0f3d;--l-text:#79385c;--l-dim:#935c77}
+:root[data-palette="mono"]{--dark:#0a0a0b;--light:#ffffff;--sig-d:#c6ff3d;--sig-l:#4d7c0f;--d-head:#f5f5f5;--d-text:#a8a8ad;--d-dim:#707076;--l-head:#0a0a0b;--l-text:#3b3b40;--l-dim:#76767c}
+:root{
+  --m2:color-mix(in oklab,var(--dark) 72%,var(--light));
+  --m3:color-mix(in oklab,var(--dark) 48%,var(--light));
+  --m5:color-mix(in oklab,var(--dark) 10%,var(--light));
+  --d-line:color-mix(in srgb,var(--d-head) 12%,transparent);
+  --l-line:color-mix(in srgb,var(--l-head) 13%,transparent);
+  --d-raise:color-mix(in srgb,var(--d-head) 5%,transparent);
+  --l-raise:color-mix(in srgb,var(--l-head) 5%,transparent);
+}
+
+/* the review bar: switch layout and colour theme (shared by all four layouts) */
+.lay-bar{position:fixed;left:50%;bottom:16px;z-index:200;transform:translateX(-50%);display:flex;align-items:center;gap:.35rem;max-width:calc(100% - 24px);
+  padding:.35rem;border-radius:999px;background:color-mix(in srgb,#0b0b0c 88%,transparent);border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 18px 40px -12px rgba(0,0,0,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  font:500 .8rem/1 Inter,system-ui,sans-serif;color:#e8e8e8;overflow-x:auto;scrollbar-width:none}
+.lay-bar::-webkit-scrollbar{display:none}
+.lay-bar .lb-k{padding:0 .5rem 0 .7rem;color:#8d8d92;white-space:nowrap;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em}
+.lay-bar a{flex:none;padding:.55rem .85rem;border-radius:999px;color:#cfcfd3;text-decoration:none;white-space:nowrap}
+.lay-bar a:hover{background:rgba(255,255,255,.08);color:#fff}
+.lay-bar a[aria-current="page"]{background:#fff;color:#0b0b0c;font-weight:600}
+.lay-bar .lb-sep{flex:none;width:1px;height:20px;margin:0 .3rem;background:rgba(255,255,255,.14)}
+.lay-bar button{flex:none;display:grid;place-items:center;width:30px;height:30px;padding:0;border-radius:50%;border:2px solid transparent;background:none;cursor:pointer}
+.lay-bar button[aria-pressed="true"]{border-color:#fff}
+.lay-bar button i{display:block;width:18px;height:18px;border-radius:50%;background:linear-gradient(90deg,var(--d) 0 50%,var(--l) 50% 100%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.2);position:relative}
+.lay-bar button i::after{content:"";position:absolute;right:-2px;bottom:-2px;width:8px;height:8px;border-radius:50%;background:var(--s);box-shadow:0 0 0 1.5px #0b0b0c}
+@media (max-width:560px){.lay-bar .lb-k{display:none}.lay-bar a{padding:.5rem .65rem}}
+
+/* "Learning path" animation (pathfx.js) on the Course, Editorial and Game layouts */
+.lp-wrap{position:relative;margin:1.6rem 0;cursor:crosshair}
+.lp-wrap canvas{display:block;width:100%;height:190px}
+.lp-cap{display:flex;align-items:center;gap:.5rem;margin:0 0 .4rem;font:500 .7rem/1.2 ui-monospace,"SF Mono",Menlo,Consolas,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--d-dim)}
+.lp-cap i{width:7px;height:7px;border-radius:50%;background:var(--sig-d);box-shadow:0 0 0 0 color-mix(in srgb,var(--sig-d) 60%,transparent);animation:lp-live 2s infinite}
+@keyframes lp-live{70%{box-shadow:0 0 0 7px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.lp-ed{margin:2.6rem 0 1.4rem}
+.lp-ed canvas{height:220px}
+.lp-course{margin:1.4rem 0 1.6rem}
+.lp-course canvas{height:170px}
+.lp-game{margin:2.4rem 0 0;padding:1rem 1.1rem .8rem;border-radius:16px;border:1px solid var(--d-line);background:var(--d-raise)}
+@media (max-width:560px){.lp-wrap canvas,.lp-ed canvas{height:160px}}
+@media (prefers-reduced-motion:reduce){.lp-cap i{animation:none}}
+
+/* Emerald theme: buttons are a bright white that stands out on the green; pink stays the accent everywhere else */
+:root[data-palette="emerald"]{--btn:#ffffff;--btn-ink:#053b2d;--btn-glow:0 0 0 1px rgba(255,255,255,.9),0 10px 30px -8px rgba(255,255,255,.55)}
+:root[data-palette="emerald"] :is(.e-btn.accent,.c-top .btn.primary,.intro .btn.primary,.cert .btn.primary,.gbtn.accent,.m-links a:first-child,.c-primary,.tb-cv){
+  background:var(--btn);border-color:var(--btn);color:var(--btn-ink);box-shadow:var(--btn-glow);font-weight:700}
+:root[data-palette="emerald"] .gbtn.accent{box-shadow:0 4px 0 #b8cbbf,0 0 28px -6px rgba(255,255,255,.6)}
+:root[data-palette="emerald"] :is(.e-btn.accent,.c-top .btn.primary,.intro .btn.primary,.cert .btn.primary,.gbtn.accent,.m-links a:first-child,.c-primary,.tb-cv):hover{background:#fff;filter:none;box-shadow:0 0 0 1px #fff,0 14px 36px -8px rgba(255,255,255,.75)}
+/* white buttons that sit on a light surface get an emerald outline so they still stand out */
+:root[data-palette="emerald"] :is(.btn.primary,.g-card .gbtn.accent):not(.c-top .btn.primary):not(.intro .btn.primary):not(.cert .btn.primary){
+  background:#fff;border:1.5px solid var(--dark);color:var(--dark);font-weight:700;box-shadow:0 4px 0 var(--dark),0 10px 24px -12px rgba(5,59,45,.45)}
